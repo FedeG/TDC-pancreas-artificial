@@ -26,6 +26,8 @@ UTN FRBA - Teoría de control: Código arduino de simulación de un páncreas ar
 
 ### Tabla de valores
 
+- **Planilla**: [link de drive](https://docs.google.com/spreadsheets/d/1eZSCC03KBxAKdVK58ssGJT3xnhAzRS-QLdvUbbb3vlo/edit?usp=sharing)
+
 |Oi (valorRef)|Sensor de agua|t|dt|f|e (Oi - f)|e previo|de/dt|proporcional (e < 0)|derivativo (de/dt < -30)|OR|siguiente dt|
 |---|---|---|---|---|---|---|---|---|---|---|---|
 |180|0|0|0|50|130|null|null|FALSO|FALSO|FALSO|1000|
