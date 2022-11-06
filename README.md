@@ -2,6 +2,15 @@
 
 UTN FRBA - Teoría de control: Código arduino de simulación de un páncreas artificial basado en la investigación del CONICET
 
+### Demo
+
+- **Demo en wokwi**: [Abrir la demo en wokwi](https://wokwi.com/projects/347496920546017875)
+- **Nota**: para la demo se utiliza un potenciometro en lugar del sensor de agua para poder cambiar el valor de medición
+
+#### Imagen de demo con hardware
+
+
+
 ### Se hace un control PD (proporcional-derivativo)
 
 #### Parámetros
