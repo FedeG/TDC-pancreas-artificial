@@ -9,7 +9,7 @@ UTN FRBA - Teoría de control: Código arduino de simulación de un páncreas ar
 
 #### Imagen de demo con hardware
 
-
+![image](https://user-images.githubusercontent.com/4097554/200192254-f3120795-0d62-47e2-8c90-13e850537b6e.png)
 
 ### Se hace un control PD (proporcional-derivativo)
 
