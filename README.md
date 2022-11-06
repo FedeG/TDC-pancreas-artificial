@@ -2,9 +2,9 @@
 
 UTN FRBA - Teoría de control: Código arduino de simulación de un páncreas artificial basado en la investigación del CONICET
 
-## Se hace un control PD (proporcinal-derivativo)
+## Se hace un control PD (proporcional-derivativo)
 
-### Parametros
+### Parámetros
 
 - Valor de referencia: `180 mg/dl`
 - Glucosa: medición del sensor de agua mapeado de `0 a 1023` (**sensor agua**) con `50 a 300` (**f**)
@@ -14,9 +14,9 @@ UTN FRBA - Teoría de control: Código arduino de simulación de un páncreas ar
 
 ### Tiempos de medición
 
-- Si los valores de glucemia estan entre `120` y `180` (`60` menos del valor de referencia) se toman mediciones cada `500` milisegundos
-- Si los valores de glucemia estan por debajo de `120` (`60` menos del valor de referencia) se toman mediciones cada `1000` milisegundos
-- Si los valores de glucemia supera los `180` (valor de referencia) se esperan `2000` milisegundos para injección de insulina y `15000` de espera de metabolisacion
+- Si los valores de glucemia están entre `120` y `180` (`60` menos del valor de referencia) se toman mediciones cada `500` milisegundos
+- Si los valores de glucemia están por debajo de `120` (`60` menos del valor de referencia) se toman mediciones cada `1000` milisegundos
+- Si los valores de glucemia supera los `180` (valor de referencia) se esperan `2000` milisegundos para inyección de insulina y `15000` de espera de metabolización
 
 ### Calculo derivativo
 
