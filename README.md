@@ -33,6 +33,11 @@ UTN FRBA - Teoría de control: Código arduino de simulación de un páncreas ar
 - Calculo de `dedt` -> `(e-ePrevio) / (dt / 1000)`
 - Si el valor de derivativo (`dedt`) es menor a `-30`
 
+#### Calculo de dosis
+
+- Se calcula la unidades de insulina con el siguiente calculo `f/(ValorRef/2)`, dando como resultado entre 1-3 unidades
+- El valor final esperado se calcula como `f - (unidades de insulina * 50)`
+
 ### Tabla de valores
 
 - **Planilla**: [link de drive](https://docs.google.com/spreadsheets/d/1eZSCC03KBxAKdVK58ssGJT3xnhAzRS-QLdvUbbb3vlo/edit?usp=sharing)
@@ -61,7 +66,7 @@ t|dt|Oi (valorRef)|Sensor de agua|f|e (Oi - f)|e previo|e diff (e - e previo) /t
 
 ### Gráfico de tabla de valores
 
-![Screenshot from 2022-11-06 15-58-04](https://user-images.githubusercontent.com/4097554/200191149-89ff518a-fbb6-4e1c-a145-d4da0b08d509.png)
+![Screenshot from 2022-11-16 19-34-45](https://user-images.githubusercontent.com/4097554/202314324-4bae1307-c992-43cc-b813-cdc4e346454f.png)
 
 ### Ver en consola de linux
 
@@ -74,28 +79,29 @@ cat /dev/ttyACM0
 
 #### Valor normal (bajo) -> dt = 1000
 
-![Screenshot from 2022-11-06 15-55-34](https://user-images.githubusercontent.com/4097554/200191160-d2123fba-e53c-412b-ad1a-81093da9eab0.png)
+![Screenshot from 2022-11-16 20-11-57](https://user-images.githubusercontent.com/4097554/202315198-e718d181-4add-46d5-a47a-aa3973871b22.png)
 
 #### Valor alto (pasado de 180) -> activación por proporcional -> inyección de insulina
 
-![Screenshot from 2022-11-06 15-55-38](https://user-images.githubusercontent.com/4097554/200191158-bae306c7-5763-4be3-a1bb-1f638df9f06f.png)
+![Screenshot from 2022-11-16 20-12-52](https://user-images.githubusercontent.com/4097554/202315192-80f1d650-b889-4905-a8cc-27d3688629c6.png)
 
 #### Valor alto (pasado de 180) -> espera post inyección por proporcional
 
-![Screenshot from 2022-11-06 15-55-40](https://user-images.githubusercontent.com/4097554/200191157-da3cd858-0e74-4e60-9551-a1ac92285ec5.png)
+![Screenshot from 2022-11-16 20-13-00](https://user-images.githubusercontent.com/4097554/202315189-8024528c-a466-4254-9db5-d825fb5f59b5.png)
 
 #### Valor normal (medio-alto) -> dt = 500
 
-![Screenshot from 2022-11-06 15-55-56](https://user-images.githubusercontent.com/4097554/200191156-abd90f8e-a37c-4976-924d-98195c4b389f.png)
+![Screenshot from 2022-11-16 20-13-52](https://user-images.githubusercontent.com/4097554/202315184-b0e8b014-1a33-480c-9cd5-89aa3f6ab402.png)
 
 #### Valor normal (bajo) -> dt = 1000
 
-![Screenshot from 2022-11-06 15-56-20](https://user-images.githubusercontent.com/4097554/200191155-6a7057ac-b488-4d76-bc51-4df5318a88fe.png)
+![Screenshot from 2022-11-16 20-13-56](https://user-images.githubusercontent.com/4097554/202315180-635b9a7f-166b-4c62-a710-9522a03fc6fb.png)
 
 #### Valor normal (alto -> warning) con activación por derivativo
 
-![Screenshot from 2022-11-06 15-56-24](https://user-images.githubusercontent.com/4097554/200191154-32a9eccb-01f2-4613-a70d-f96f3687e5e9.png)
+![Screenshot from 2022-11-16 20-14-02](https://user-images.githubusercontent.com/4097554/202315176-445b9b25-35d9-45ec-801d-0e4fb1214ab0.png)
+![Screenshot from 2022-11-16 20-14-09](https://user-images.githubusercontent.com/4097554/202315171-51b2fdfd-1567-4181-84b9-d94fb5282136.png)
 
 #### Valor normal (alto -> warning) con post activación derivativo (después de espera)
 
-![Screenshot from 2022-11-06 15-56-46](https://user-images.githubusercontent.com/4097554/200191152-795948b9-6021-4d36-a51f-1967bc9eaa25.png)
+![Screenshot from 2022-11-16 20-15-21](https://user-images.githubusercontent.com/4097554/202315157-c0b17b1c-c3ff-442d-8935-86f1ec2c9d5c.png)
