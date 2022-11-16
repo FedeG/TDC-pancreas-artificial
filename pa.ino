@@ -44,6 +44,18 @@ void showGlucemia(int glucemia) {
   lcd.print("mg/dl");
 }
 
+void showInsulinUnits(int insulinUnits) {
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Injecting");
+  lcd.setCursor(14,0);
+  lcd.print(insulinUnits);
+  lcd.setCursor(0,1);
+  lcd.print("insulin");
+  lcd.setCursor(11,1);
+  lcd.print("units");
+}
+
 void setLed(Color color){
   switch (color)
   {
@@ -76,6 +88,18 @@ int getDelayByState(State state){
     default: return 500;
   }
 }
+
+int getInsulinUnits(float from, float to) {
+  float units = from/to;
+  return units;
+}
+
+void showValorFinalEsperado(float f, int insulinUnits) {
+  Serial.print("Valor final espearado: ");
+  Serial.print(f-(insulinUnits*50));
+  Serial.println(" mg/dl");
+}
+
 
 float ValorRef = 180;
 float f = 0;
@@ -129,8 +153,13 @@ void loop() {
   boolean D = (ePrev and getDerivativeValue() < -30);
   showValues(dedt, P, D);
 
+  int insulinUnits = 0;
   if (P or D) {
-    Serial.println("Inyectando 1 unidad internacional de insulina");
+    insulinUnits = getInsulinUnits(f, ValorRef/2);
+    Serial.print("Inyectando ");
+    Serial.print(insulinUnits);
+    Serial.println(" unidad internacional de insulina");
+    showInsulinUnits(insulinUnits);
     setLed(RED);
     delay(getDelayByState(INJECTING));
     Serial.println("Esperando metabolización de la insulina");
@@ -140,6 +169,7 @@ void loop() {
     setLed(GREEN);
     delay(getDelayByValue());
   }
+  showValorFinalEsperado(f, insulinUnits);
 
   ePrev = e;
   prevMeasurementTime = lastMeasurementTime;
